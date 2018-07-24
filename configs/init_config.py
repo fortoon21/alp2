@@ -11,6 +11,7 @@ from configs.resnet_type import resnet_type_config
 from configs.resnet_num import resnet_num_config
 from configs.resnet_sym import resnet_sym_config
 from configs.resnet_alp import resnet_alp_config
+from configs.resnet_alp2 import resnet_alp2_config
 
 def init_config(args):
 
@@ -57,6 +58,8 @@ def init_config(args):
 
     elif model_name=='resnet_sym':
         opt=resnet_sym_config(args)
+    elif model_name=='resnet_alp2':
+        opt=resnet_alp2_config(args)
     else:
         raise ValueError('[!] model not found!')
 

@@ -5,7 +5,7 @@ def resnet_sym_config(args):
     args.add_argument('--img_size', type=int, default=96)
 
     # v_caption_patch_hangul
-    args.add_argument('--num_classes',  type=int, default=26)
+    args.add_argument('--num_classes',  type=int, default=27)
 
     args.add_argument('--use_pretrained', type=bool, default=True)
 

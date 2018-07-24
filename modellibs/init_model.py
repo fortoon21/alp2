@@ -115,6 +115,9 @@ def init_model(opt):
         if opt.base_model == 'resnet18':
             from modellibs.chanet.chanet import chanet18
             model = chanet18(pretrained=opt.use_pretrained, opt=opt).to(opt.device)
+        elif opt.base_model == 'resnet50':
+            from modellibs.chanet.chanet import resnet50
+            model = resnet50(pretrained=opt.use_pretrained, opt=opt).to(opt.device)
 
     elif model_name == 'resnet_nas':
         if opt.resnet_model == 'resnet18':
@@ -147,6 +150,14 @@ def init_model(opt):
         elif opt.resnet_model == 'resnet50':
             from modellibs.resnet_alp.resnet_alp import resnet50_alp
             model = resnet50_alp(pretrained=opt.use_pretrained, opt=opt).to(opt.device)
+
+    elif model_name == 'resnet_alp2':
+        if opt.resnet_model == 'resnet18':
+            from modellibs.resnet_alp2.resnet_alp2 import resnet18_alp2
+            model = resnet18_alp2(pretrained=opt.use_pretrained, opt=opt).to(opt.device)
+        elif opt.resnet_model == 'resnet50':
+            from modellibs.resnet_alp2.resnet_alp2 import resnet50_alp2
+            model = resnet50_alp2(pretrained=opt.use_pretrained, opt=opt).to(opt.device)
 
     elif model_name == 'resnet_sym':
         if opt.resnet_model == 'resnet18':

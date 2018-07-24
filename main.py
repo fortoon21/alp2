@@ -16,14 +16,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--command', type=str, default='train')
-    parser.add_argument('--dataset', type=str, default='v_caption_patch_num')
+    parser.add_argument('--dataset', type=str, default='v_caption_patch')
     parser.add_argument('--task', type=str, default='classification')
-    parser.add_argument('--model', type=str, default='resnet_num')
+    parser.add_argument('--model', type=str, default='chanet')
     parser.add_argument('--resume', type=bool, default=False)
-    parser.add_argument('--resume_path', type=str, default='/home/jade/ws/detectron/experiments/v_caption_patch_type_classification_resnet_type/v_caption_patch_type_classif'
-                                                           'ication_resnet_type_best_loss_0.051848/model_best.pth')
+    parser.add_argument('--resume_path', type=str, default='/home/jade/ws/detectron/experiments/v_caption_patch_alp2_classification_resnet_alp2/v_caption_patch_alp2_classification_resnet_alp2_best_loss_0.166379/model_best.pth')
 
-    parser.add_argument('--data_root_dir', type=str, default='/home/user/VDO/Dataset/v_caption')
+    parser.add_argument('--data_root_dir', type=str, default='/home/jade/ws/vdotdo')
 
     parser.add_argument('--batch_size_train', type=int, default=256)
     parser.add_argument('--batch_size_valid', type=int, default=256)

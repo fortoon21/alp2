@@ -85,6 +85,12 @@ def init_trainer(opt, trainloader, validloader, model):
                           trainloader,
                           validloader,
                           model)
+    elif model_name == 'resnet_alp2':
+        from trainer.train_resnet_alp2 import Trainer
+        trainer = Trainer(opt,
+                          trainloader,
+                          validloader,
+                          model)
     elif model_name == 'resnet_sym':
         from trainer.train_resnet_sym import Trainer
         trainer = Trainer(opt,

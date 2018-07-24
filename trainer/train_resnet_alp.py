@@ -28,7 +28,7 @@ class Trainer(object):
 
         self.criterion = torch.nn.CrossEntropyLoss().cuda()
 
-        self.optimizer = torch.optim.Adam(model.parameters(), lr=opt.lr, weight_decay=opt.weight_decay)
+        self.optimizer = torch.optim.Adam(model.parameters(),lr=opt.lr, weight_decay=opt.weight_decay)
 
         self.best_loss = float('inf')
 
@@ -40,7 +40,9 @@ class Trainer(object):
         self.max_epoch = max_epoch
 
         for epoch in range(self.start_epoch, self.max_epoch):
-            self.adjust_learning_rate(self.optimizer, epoch)
+            if epoch in self.opt.lr_steps:
+                self.opt.step_index += 1
+                self.adjust_learning_rate(self.opt.gamma, self.opt.step_index)
 
             self.train_epoch(epoch)
             self.valid_epoch(epoch)
@@ -131,12 +133,15 @@ class Trainer(object):
         print('Val Accuracy: {}/{} ({:.0f}%)'.format(
             correct, num_test_data, accuracy))
 
-    def adjust_learning_rate(self, optimizer, epoch):
-        """Sets the learning rate to the initial LR decayed by 10 every 30 epochs"""
-        self.current_lr = self.opt.lr * (0.1 ** (epoch // 30))
-        for param_group in optimizer.param_groups:
+    def adjust_learning_rate(self, gamma, step):
+
+        self.current_lr = self.opt.lr * (gamma ** (step))
+        for param_group in self.optimizer.param_groups:
             param_group['lr'] = self.current_lr
 
     def make_dir(self, dir_path):
         if not os.path.exists(os.path.join(self.opt.expr_dir, dir_path)):
             os.mkdir(os.path.join(self.opt.expr_dir, dir_path))
+
+
+

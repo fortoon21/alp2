@@ -9,7 +9,7 @@ from loss.ssd_loss import SSDLoss
 from metrics.voc_eval import voc_eval
 from modellibs.s3fd.box_coder import S3FDBoxCoder
 from utils.average_meter import AverageMeter
-import matlab.engine
+
 
 class Trainer(object):
 

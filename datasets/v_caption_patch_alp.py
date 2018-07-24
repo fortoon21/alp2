@@ -58,7 +58,7 @@ class V_Caption_Patch_Alp(data.Dataset):
           boxes: (tensor) bounding box targets.
           labels: (tensor) class label targets.
         '''
-        # Load image and boxes.
+        # Load image and boxes.c
         fname = self.fnames[idx]
         img = Image.open(os.path.join(self.root, fname))
 
